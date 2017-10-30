@@ -1,0 +1,70 @@
+<label>letter</label>
+<input type="text" id="input">
+<button id="ok">ok</button>
+
+<span id="result"></span>
+
+<script>
+    // LISTE DE MOTS PRÉ-ENREGISTRÉS
+    var list = [
+        "developpement",
+        "clean",
+        "entreprenariat",
+        "gestion",
+        "interface"
+    ];
+    console.log(list);
+
+
+
+
+    // 1 MOT CHOISI DE MANIÈRE ALÉATOIRE
+    function chooseWord() {
+
+        return list[Math.floor(Math.random() * list.length)];
+    }
+
+    //chooseWord();
+    //console.log(chooseWord());
+
+    var word = chooseWord();
+    console.log(word);
+
+
+
+    // RÉCUPÉRER LA LETTRE ENVOYÉE DANS LE INPUT EN CLIQUANT SUR "ok"
+    var okButton = document.querySelector("#ok");
+
+    // AJOUTER UN COMPTEUR DE MAUVAISES REPONSES
+    var compteur = 0;
+
+    okButton.addEventListener('click', function () {
+        var letter = document.getElementById("input").value;
+        console.log(letter);
+
+        // CHERCHER LA LETTRE DANS LE MOT
+        var result = word.search(letter);
+        //console.log(result);
+
+        if (result !== -1){
+            console.log("bonne réponse!");
+
+        } else {
+            compteur = compteur + 1;
+            console.log(compteur);
+
+            if (compteur < 10){
+                alert("essaye encore...");
+
+            } else {
+                alert("tu as perdu...")
+            }
+
+        }
+
+        return letter
+    });
+
+
+</script>
+
